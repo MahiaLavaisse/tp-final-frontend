@@ -1,0 +1,40 @@
+.userPage {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.userContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.userCard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  padding: 2rem;
+}
+
+.userTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.userId {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .userContainer {
+    padding: 1rem;
+  }
+  
+  .userCard {
+    padding: 1.5rem;
+  }
+}

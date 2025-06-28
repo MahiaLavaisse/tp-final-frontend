@@ -1,0 +1,29 @@
+.appContainer {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+}
+
+/* Accesibilidad AA */
+.text-contrast {
+  color: #1e293b;
+}
+
+.bg-contrast {
+  background-color: #f8fafc;
+}
+
+/* Responsividad */
+@media (max-width: 320px) {
+  .responsive-padding {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  .max-width-large {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
