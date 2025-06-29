@@ -14,6 +14,12 @@ const HomePage = () => {
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const [testimonialsVisible, setTestimonialsVisible] = useState(false);
 
+
+const params = useParams();
+if (params.section) {
+  console.log("Parámetro recibido:", params.section);
+}
+
   // Mapeo de secciones
   const sectionMap = {
     caracteristicas: featuresRef,
