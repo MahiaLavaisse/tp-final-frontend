@@ -1,14 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import styles from './HomePage.module.css';
-import { FiShield, FiZap, FiLock, FiAward, FiChevronRight } from 'react-icons/fi';
+import { FiShield, FiZap, FiLock, FiAward } from 'react-icons/fi';
 
 const HomePage = () => {
+  const { section } = useParams();
   const [isVisible, setIsVisible] = useState(false);
   const featuresRef = useRef(null);
   const testimonialsRef = useRef(null);
+  const storyRef = useRef(null);
+  const partnersRef = useRef(null);
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const [testimonialsVisible, setTestimonialsVisible] = useState(false);
+
+  // Mapeo de secciones
+  const sectionMap = {
+    caracteristicas: featuresRef,
+    testimonios: testimonialsRef,
+    historia: storyRef,
+    aliados: partnersRef
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -31,11 +43,21 @@ const HomePage = () => {
     if (featuresRef.current) observer.observe(featuresRef.current);
     if (testimonialsRef.current) observer.observe(testimonialsRef.current);
     
+    // Scroll a sección específica
+    if (section && sectionMap[section]?.current) {
+      setTimeout(() => {
+        sectionMap[section].current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300);
+    }
+    
     return () => {
       if (featuresRef.current) observer.unobserve(featuresRef.current);
       if (testimonialsRef.current) observer.unobserve(testimonialsRef.current);
     };
-  }, []);
+  }, [section]);
 
   const features = [
     {
@@ -94,7 +116,6 @@ const HomePage = () => {
       name: "Amazon Web Services",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png"
     },
-    
     {
       id: 2,
       name: "Google Cloud",
@@ -196,7 +217,10 @@ const HomePage = () => {
       </section>
 
       {/* Our Story */}
-      <section className={styles.storySection}>
+      <section 
+        className={styles.storySection}
+        ref={storyRef}
+      >
         <div className={styles.storyContent}>
           <div className={styles.storyText}>
             <div className={styles.sectionHeader}>
@@ -238,7 +262,10 @@ const HomePage = () => {
       </section>
 
       {/* Technology Partners */}
-      <section className={styles.partnersSection}>
+      <section 
+        className={styles.partnersSection}
+        ref={partnersRef}
+      >
         <div className={styles.sectionHeader}>
           <h2>Alianzas Tecnológicas</h2>
           <p>Colaboramos con los líderes de la industria</p>

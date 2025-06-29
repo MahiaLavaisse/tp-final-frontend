@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import styles from './Header.module.css';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 
 const Header = () => {
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSectionsOpen, setIsSectionsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,14 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Secciones disponibles
+  const sections = [
+    { id: 'caracteristicas', name: 'Características' },
+    { id: 'testimonios', name: 'Testimonios' },
+    { id: 'historia', name: 'Nuestra Historia' },
+    { id: 'aliados', name: 'Aliados Tecnológicos' }
+  ];
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -31,6 +40,36 @@ const Header = () => {
 
         {/* Menú de escritorio */}
         <nav className={styles.desktopNav}>
+          {/* Menú desplegable de secciones */}
+          <div 
+            className={styles.sectionsDropdown}
+            onMouseEnter={() => setIsSectionsOpen(true)}
+            onMouseLeave={() => setIsSectionsOpen(false)}
+          >
+            <button className={styles.sectionsToggle}>
+              <span>Secciones</span>
+              <FiChevronDown size={16} />
+            </button>
+            
+            {isSectionsOpen && (
+              <div className={styles.sectionsMenu}>
+                {sections.map(section => (
+                  <NavLink 
+                    key={section.id}
+                    to={`/${section.id}`}
+                    className={({ isActive }) => 
+                      isActive 
+                        ? `${styles.sectionLink} ${styles.activeSection}` 
+                        : styles.sectionLink
+                    }
+                  >
+                    {section.name}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+          
           {user ? (
             <div className={styles.userNav}>
               <span className={styles.userGreeting}>Hola, {user.name}</span>
@@ -64,6 +103,21 @@ const Header = () => {
 
         {isMenuOpen && (
           <div className={styles.mobileMenu}>
+            {/* Secciones en menú móvil */}
+            <div className={styles.mobileSections}>
+              <h3 className={styles.mobileSectionsTitle}>Explorar secciones</h3>
+              {sections.map(section => (
+                <Link 
+                  key={section.id}
+                  to={`/${section.id}`}
+                  className={styles.mobileSectionLink}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {section.name}
+                </Link>
+              ))}
+            </div>
+            
             {user ? (
               <>
                 <div className={styles.mobileUserInfo}>
