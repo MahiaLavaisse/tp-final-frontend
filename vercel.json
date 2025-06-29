@@ -1,9 +1,4 @@
 {
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
   "builds": [
     {
       "src": "package.json",
@@ -13,7 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/$1"
+      "dest": "dist/index.html"
     }
   ]
 }

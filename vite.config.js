@@ -6,9 +6,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    minify: 'terser'  // Asegura que usa terser
+    minify: 'terser'
   },
-  esbuild: {
-    target: 'esnext'  // Configuración adicional recomendada
-  }
+  base: '/'
 })
