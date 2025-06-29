@@ -13,7 +13,6 @@ const UserPage = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // En una aplicación real, haríamos una solicitud a la API con el id
         const profile = getProfile();
         if (profile) {
           setUserData(profile);

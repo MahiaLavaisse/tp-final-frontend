@@ -13,8 +13,6 @@
   background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
 }
 
-/* ... resto igual al anterior ... */
-
 /* Mejoras de accesibilidad */
 .text-contrast {
   color: #1e293b; /* 15.8:1 con fondo #f3f4f6 (AA+) */
@@ -24,7 +22,7 @@
   background-color: #f8fafc; /* 12:1 con texto #1e293b (AA+) */
 }
 
-/* Responsividad mejorada */
+
 @media (max-width: 320px) {
   .responsive-padding {
     padding: 0.75rem;
