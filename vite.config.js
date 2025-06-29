@@ -5,6 +5,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    minify: 'terser'  // Asegura que usa terser
+  },
+  esbuild: {
+    target: 'esnext'  // Configuración adicional recomendada
   }
 })
