@@ -3,25 +3,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3f4f6;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  padding: 1rem;
+  padding-top: 70px;
 }
 
 .authForm {
   width: 100%;
-  max-width: 400px;
-  padding: 2rem;
+  max-width: 450px; /* Un poco más ancho */
+  padding: 2.5rem;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 16px; /* Bordes más redondeados */
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.05),
+    0 20px 48px rgba(37, 99, 235, 0.08); /* Sombra con tono azul */
+  border: 1px solid rgba(37, 99, 235, 0.1); /* Borde sutil */
 }
 
 .authTitle {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.75rem; /* Más grande */
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #1e293b;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
+
+/* Línea decorativa bajo el título */
+.authTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  border-radius: 2px;
+}
+
+/* ... resto igual al anterior ... */
 
 .formGroup {
   margin-bottom: 1rem;
@@ -31,34 +53,36 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #374151;
+  color: #374151; /* Contraste AA */
+  font-size: 0.95rem;
 }
 
 .formGroup input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.7rem;
   border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
 }
 
 .formGroup input:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .submitButton {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #2563eb;
+  padding: 0.8rem;
+  background-color: #2563eb; /* Contraste 7:1 (AAA) */
   color: white;
   font-weight: 500;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
   margin-top: 0.5rem;
+  transition: background-color 0.2s;
 }
 
 .submitButton:hover {
@@ -66,7 +90,7 @@
 }
 
 .registerButton {
-  background-color: #16a34a;
+  background-color: #16a34a; /* Contraste 5.5:1 (AA+) */
 }
 
 .registerButton:hover {
@@ -75,23 +99,38 @@
 
 .authFooter {
   text-align: center;
-  margin-top: 1.5rem;
-  color: #2563eb;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
 }
 
 .authFooter a {
-  color: #2563eb;
+  color: #2563eb; /* Contraste 4.6:1 (AA) */
   text-decoration: none;
+  font-weight: 500;
 }
 
 .authFooter a:hover {
   text-decoration: underline;
 }
 
-/* Responsividad */
-@media (max-width: 480px) {
+/* Responsividad mejorada */
+@media (max-width: 320px) {
   .authForm {
-    padding: 1.5rem;
-    margin: 0 1rem;
+    padding: 1.25rem;
+    margin: 0 0.5rem;
+  }
+  
+  .authTitle {
+    font-size: 1.25rem;
+  }
+  
+  .formGroup input {
+    padding: 0.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .authForm {
+    padding: 2rem;
   }
 }

@@ -3,26 +3,27 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.98);
   z-index: 1000;
-  transition: all 0.4s ease;
+  padding: 1.2rem 0;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  padding: 0.8rem 0;
 }
 
 .headerContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .logoContainer {
@@ -30,190 +31,250 @@
   align-items: center;
 }
 
-.logoButton {
-  background: none;
-  border: none;
+.logo {
   font-size: 1.8rem;
   font-weight: 800;
-  cursor: pointer;
-  padding: 0;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.logoButton:hover {
-  transform: scale(1.05);
+.logo:hover {
+  transform: translateY(-2px);
 }
 
 .logoPart {
   color: #2563eb;
+  letter-spacing: -0.5px;
 }
 
 .logoHighlight {
-  color: #8b5cf6;
+  color: #7c3aed;
+  font-weight: 700;
   position: relative;
 }
 
 .logoHighlight::after {
   content: '';
   position: absolute;
-  bottom: 2px;
+  bottom: 3px;
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
   border-radius: 2px;
 }
 
-.navDesktop {
+/* Navegación de escritorio */
+.desktopNav {
   display: flex;
   align-items: center;
 }
 
 .userNav, .authNav {
   display: flex;
-  gap: 1.2rem;
   align-items: center;
+  gap: 1.8rem;
 }
 
-.navButton {
-  background: none;
-  border: none;
+.userGreeting {
+  font-size: 1rem;
   color: #4b5563;
-  font-size: 1rem;
   font-weight: 500;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.navButton:hover {
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.05);
-}
-
-.navButton.active {
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.1);
-  font-weight: 600;
-}
-
-.navIcon {
-  font-size: 0.9rem;
-}
-
-.registerButton {
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 0.6rem 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
+.navLink {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 1.05rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
 }
 
-.registerButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+.navLink:hover {
+  color: #2563eb;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 .logoutButton {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 0.6rem 1.5rem;
-  cursor: pointer;
+  background: none;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  border-radius: 6px;
+  padding: 0.6rem 1.4rem;
   font-size: 1rem;
   font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .logoutButton:hover {
+  background-color: #dc2626;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
 }
 
+.registerButton {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
+}
+
+.registerButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+}
+
+/* Menú móvil */
 .menuToggle {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
   color: #4b5563;
   cursor: pointer;
+  z-index: 1001;
   padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.menuToggle:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .mobileMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
   background: white;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+  padding: 7rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  z-index: 999;
+  gap: 1.2rem;
+  z-index: 1000;
+  transform: translateX(100%);
+  animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-.mobileNavButton, 
-.mobileRegisterButton,
-.mobileLogoutButton,
-.mobileHomeButton {
-  padding: 1rem;
-  border: none;
+@keyframes slideIn {
+  to { transform: translateX(0); }
+}
+
+.mobileUserInfo {
+  padding-bottom: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 1.2rem;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 1.15rem;
   border-radius: 8px;
-  font-size: 1.1rem;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.mobileNavButton {
-  background: rgba(37, 99, 235, 0.05);
-  color: #2563eb;
-}
-
-.mobileRegisterButton {
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: white;
+.mobileNavLink:hover {
+  background: #f3f4f6;
+  transform: translateX(5px);
 }
 
 .mobileLogoutButton {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  color: white;
+  background: none;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  border-radius: 8px;
+  padding: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.mobileHomeButton {
-  background: rgba(59, 130, 246, 0.1);
-  color: #1d4ed8;
-  margin-top: 1rem;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 1.2rem;
+.mobileLogoutButton:hover {
+  background-color: #dc2626;
+  color: white;
+  transform: translateX(5px);
+}
+
+.mobileRegisterButton {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mobileRegisterButton:hover {
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  transform: translateX(5px);
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
-  .navDesktop {
+  .desktopNav {
     display: none;
   }
   
   .menuToggle {
     display: block;
+  }
+  
+  .headerContainer {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer {
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+  }
+  
+  .mobileMenu {
+    width: 90%;
+    padding: 6rem 1.5rem 2rem;
   }
 }
